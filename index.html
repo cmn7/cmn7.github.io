@@ -12,25 +12,22 @@
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: space-between;
             align-items: center;
             height: 100vh;
-            padding: 20px;
+            padding-left: 50px; /* Shift content from the edge */
         }
-        .image-container {
-            flex: 1;
+        .container {
             display: flex;
-            justify-content: center;
+            align-items: center;
+            gap: 20px; /* Space between image and text */
         }
         .image-container img {
-            max-width: 80%;
+            max-width: 150px; /* Adjust as needed */
             height: auto;
             border-radius: 10px;
         }
         .text-container {
-            flex: 1;
-            text-align: right;
-            padding-right: 50px;
+            text-align: left;
         }
         h1 {
             font-size: 2.5rem;
@@ -52,28 +49,30 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             body {
+                padding-left: 20px;
+            }
+            .container {
                 flex-direction: column;
                 text-align: center;
-                justify-content: center;
-                padding: 10px;
             }
             .text-container {
                 text-align: center;
-                padding-right: 0;
             }
             .image-container img {
-                max-width: 60%;
+                max-width: 100px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="image-container">
-        <img src="brain_image.png" alt="Brain Image">
-    </div>
-    <div class="text-container">
-        <h1>Caitlin Neher</h1>
-        <p><a href="mailto:neherc@uw.edu">neherc@uw.edu</a></p>
+    <div class="container">
+        <div class="image-container">
+            <img src="brain_image.png" alt="Brain Image">
+        </div>
+        <div class="text-container">
+            <h1>Caitlin Neher</h1>
+            <p><a href="mailto:neherc@uw.edu">neherc@uw.edu</a></p>
+        </div>
     </div>
 </body>
 </html>

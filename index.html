@@ -3,59 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>r</title>
     <link rel="stylesheet" href="style.css">
 
-    <!-- Include Papaya.js -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/rii-mango/Papaya@master/release/current/standard/papaya.js"></script>
+    <!-- Include AMI.js -->
+    <script src="https://unpkg.com/ami.js"></script>
 
     <style>
-        /* Full-width seamless viewer */
-        .papaya {
+        /* Fullscreen NIfTI Viewer */
+        #container {
             width: 100%;
-            height: 85vh; /* Adjust to fit most screens */
-            margin: auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        /* Dark background for better contrast */
-        body {
+            height: 85vh;
             background-color: black;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-
-        /* Remove extra spacing */
-        main {
-            padding: 0;
         }
     </style>
-
-    <script>
-        var params = { 
-            "images": ["ShearStiffness_winfo_erode4_new.nii?nocache=timestamp"],
-            "showControls": false,  // Hide all UI controls
-            "showImageButtons": false, // Hide side buttons
-            "showRuler": false, 
-            "worldSpace": false,      // Maintain real-world coordinates
-            "flipY": true,
-            "smoothDisplay": true,   // Enable smooth rendering
-            "orthogonal": false,     // Keep a single view
-            "showCrosshairs": false, // Hide crosshairs for a clean experience
-            "lut": "Spectrum",
-            "scrollWheel": true,     // Enable seamless slice scrolling
-            "fullScreen": true       // Maximize display
-        };
-    </script>
 </head>
 <body>
     <header>
         <h1></h1>
     </header>
-    
+
     <nav>
         <a href="index.html">home</a> |
         <a href="about.html">about</a> |
@@ -66,8 +33,23 @@
     <main>
         <p></p>
 
-        <!-- Papaya.js NIfTI Viewer -->
-        <div class="papaya" data-params="params"></div>
+        <!-- NIfTI Viewer Container -->
+        <div id="container"></div>
+
     </main>
+
+    <script>
+        const container = document.getElementById('container');
+        const loader = new AMI.VolumeLoader(container);
+
+        loader.load(["ShearStiffness_winfo_erode4_new.nii"]).then(() => {
+            const series = loader.data[0];
+            const stack = series.stack[0];
+
+            const renderer = new AMI.VolumeRenderer(container, series, stack);
+            renderer.start();
+        }).catch(error => console.error('Error loading NIfTI:', error));
+    </script>
+
 </body>
 </html>

@@ -63,7 +63,7 @@ a:hover {
 input, textarea {
     background-color: #1a1a1a; /* Slight contrast so fields are visible */
     color: white;
-    border: 1px solid #ffffff;
+    border: 0px solid #ffffff;
     padding: 10px;
     width: 20%;
 }

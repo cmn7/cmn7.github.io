@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>3D NIfTI Viewer</title>
     <link rel="stylesheet" href="style.css">
 
     <!-- Include Papaya.js for NIfTI viewer -->
@@ -17,10 +17,20 @@
             margin: 30px auto;
         }
     </style>
+
+    <script>
+        // Define Papaya.js parameters before initialization
+        var params = { 
+            "images": ["mre.nii"],  // File is in the main directory
+            "showControls": true,   // Enable zoom, contrast, and slice controls
+            "showRuler": true,      // Display scale ruler
+            "worldSpace": true      // Use world coordinates for accuracy
+        };
+    </script>
 </head>
 <body>
     <header>
-        <h1></h1>
+        <h1>NIfTI Brain Viewer</h1>
     </header>
     
     <nav>
@@ -31,18 +41,11 @@
     </nav>
 
     <main>
-        <p></p>
+        <p>Explore the NIfTI brain scan below:</p>
 
         <!-- Papaya.js NIfTI Viewer -->
         <div class="papaya" data-params="params"></div>
-
-        <script>
-            // Load the NIfTI file from the repository
-            var params = { "images": ["mre.nii"] };
-        </script>
-
     </main>
 
 </body>
 </html>
-

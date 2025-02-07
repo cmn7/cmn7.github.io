@@ -1,0 +1,81 @@
+/* Dark background and light text */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styling */
+header {
+    background-color: #1f1f1f;
+    color: white;
+    padding: 20px;
+    font-size: 24px;
+}
+
+/* Navigation menu */
+nav {
+    background-color: #333;
+    padding: 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #ffffff;
+    margin: 0 15px;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #ffcc00;
+}
+
+/* Main content */
+main {
+    padding: 30px;
+}
+
+/* Styling images */
+img {
+    display: block;
+    margin: 20px auto;
+    max-width: 80%;
+    height: auto;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
+}
+
+/* Links */
+a {
+    color: #ffcc00;
+}
+
+a:hover {
+    color: #ff9900;
+}
+
+/* Form inputs for the contact page */
+input, textarea {
+    background-color: #333;
+    color: white;
+    border: 1px solid #ffffff;
+    padding: 10px;
+    width: 80%;
+}
+
+input[type="submit"] {
+    background-color: #ffcc00;
+    color: #121212;
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+    margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+    background-color: #ff9900;
+}

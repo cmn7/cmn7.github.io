@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" href="style.css">
+
+    <!-- Include Papaya.js for NIfTI viewer -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/rii-mango/Papaya@master/release/current/standard/papaya.js"></script>
+
+    <style>
+        /* Center Papaya viewer */
+        .papaya {
+            width: 600px;
+            height: 600px;
+            margin: 30px auto;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -20,14 +32,17 @@
 
     <main>
         <p></p>
-    
-        <!-- Video Embed -->
-        <video width="1000" autoplay loop muted>
-            <source src="mre.mp4" type="video/mp4">
-        </video>
-    
-        <p></p>
+
+        <!-- Papaya.js NIfTI Viewer -->
+        <div class="papaya" data-params="params"></div>
+
+        <script>
+            // Load the NIfTI file from the repository
+            var params = { "images": ["mre.nii"] };
+        </script>
+
     </main>
 
 </body>
 </html>
+

@@ -6,18 +6,15 @@
     <title></title>
     <link rel="stylesheet" href="style.css">
 
-    <!-- Load Three.js (Required for AMI.js) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-    <!-- Load AMI.js -->
-    <script src="https://cdn.jsdelivr.net/npm/ami.js"></script>
+    <!-- Load Papaya.js -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/rii-mango/Papaya@master/release/current/standard/papaya.js"></script>
 
     <style>
-        /* Fullscreen NIfTI Viewer */
-        #container {
+        /* Full-width viewer */
+        .papaya {
             width: 100%;
             height: 85vh;
-            background-color: black;
+            margin: auto;
         }
 
         body {
@@ -27,6 +24,23 @@
             text-align: center;
         }
     </style>
+
+    <script>
+        var params = { 
+            "images": ["ShearStiffness_winfo_erode4_new.nii"],  // Make sure this file exists!
+            "showControls": false,  
+            "showImageButtons": false,
+            "showRuler": false,
+            "worldSpace": false,
+            "flipY": true,
+            "smoothDisplay": true,
+            "orthogonal": false,
+            "showCrosshairs": false,
+            "lut": "Spectrum", // Apply rainbow color map
+            "scrollWheel": true, 
+            "fullScreen": true 
+        };
+    </script>
 </head>
 <body>
     <header>
@@ -43,45 +57,8 @@
     <main>
         <p></p>
 
-        <!-- NIfTI Viewer Container -->
-        <div id="container"></div>
-
+        <!-- Papaya.js NIfTI Viewer -->
+        <div class="papaya" data-params="params"></div>
     </main>
-
-    <script>
-        async function loadNifti() {
-            try {
-                // Initialize AMI.js Renderer
-                const container = document.getElementById('container');
-
-                // Create a WebGL renderer
-                const renderer = new AMI.VolumeRenderer(container);
-                renderer.init();
-
-                // Load the NIfTI file
-                const loader = new AMI.VolumeLoader(container);
-                const series = await loader.load(["ShearStiffness_winfo_erode4_new.nii"]);
-
-                if (!series || series.length === 0) {
-                    throw new Error("Failed to load the NIfTI file. Check the file path.");
-                }
-
-                const stack = series[0].stack[0];
-
-                // Add the series to the renderer
-                renderer.addSeries(series[0]);
-                renderer.start();
-
-                console.log("NIfTI file loaded successfully.");
-
-            } catch (error) {
-                console.error("Error loading NIfTI:", error);
-            }
-        }
-
-        // Load the NIfTI file on page load
-        window.onload = loadNifti;
-    </script>
-
 </body>
 </html>

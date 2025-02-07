@@ -6,25 +6,45 @@
     <title></title>
     <link rel="stylesheet" href="style.css">
 
-    <!-- Include Papaya.js for NIfTI viewer -->
+    <!-- Include Papaya.js -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/rii-mango/Papaya@master/release/current/standard/papaya.js"></script>
 
     <style>
-        /* Center Papaya viewer */
+        /* Full-width seamless viewer */
         .papaya {
-            width: 600px;
-            height: 600px;
-            margin: 30px auto;
+            width: 100%;
+            height: 85vh; /* Adjust to fit most screens */
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* Dark background for better contrast */
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        /* Remove extra spacing */
+        main {
+            padding: 0;
         }
     </style>
 
     <script>
-        // Define Papaya.js parameters before initialization
         var params = { 
-            "images": ["mre.nii"],  // File is in the main directory
-            "showControls": false,   // Enable zoom, contrast, and slice controls
-            "showRuler": true,      // Display scale ruler
-            "worldSpace": true      // Use world coordinates for accuracy
+            "images": ["mre.nii"],  // Load your NIfTI file
+            "showControls": false,  // Hide all UI controls
+            "showImageButtons": false, // Hide side buttons
+            "worldSpace": true,      // Maintain real-world coordinates
+            "smoothDisplay": true,   // Enable smooth rendering
+            "orthogonal": false,     // Keep a single view
+            "showCrosshairs": false, // Hide crosshairs for a clean experience
+            "scrollWheel": true,     // Enable seamless slice scrolling
+            "fullScreen": true       // Maximize display
         };
     </script>
 </head>
@@ -46,6 +66,5 @@
         <!-- Papaya.js NIfTI Viewer -->
         <div class="papaya" data-params="params"></div>
     </main>
-
 </body>
 </html>

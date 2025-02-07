@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>r</title>
+    <title></title>
     <link rel="stylesheet" href="style.css">
 
-    <!-- Include AMI.js -->
-    <script src="https://unpkg.com/ami.js"></script>
+    <!-- Load Three.js (Required for AMI.js) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Load AMI.js (Medical Imaging Library) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ami.js/0.0.22/ami.min.js"></script>
 
     <style>
         /* Fullscreen NIfTI Viewer */
@@ -15,6 +18,13 @@
             width: 100%;
             height: 85vh;
             background-color: black;
+        }
+
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
         }
     </style>
 </head>
@@ -31,7 +41,7 @@
     </nav>
 
     <main>
-        <p></p>
+        <p>Scroll to navigate through slices:</p>
 
         <!-- NIfTI Viewer Container -->
         <div id="container"></div>
@@ -39,14 +49,21 @@
     </main>
 
     <script>
+        // Create the AMI.js Viewer
         const container = document.getElementById('container');
-        const loader = new AMI.VolumeLoader(container);
 
+        // Setup the AMI.js Renderer
+        const renderer = new AMI.Renderer(container);
+        renderer.init();
+
+        // Load NIfTI file
+        const loader = new AMI.VolumeLoader(container);
+        
         loader.load(["ShearStiffness_winfo_erode4_new.nii"]).then(() => {
             const series = loader.data[0];
             const stack = series.stack[0];
 
-            const renderer = new AMI.VolumeRenderer(container, series, stack);
+            renderer.addSeries(series);
             renderer.start();
         }).catch(error => console.error('Error loading NIfTI:', error));
     </script>

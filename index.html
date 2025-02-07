@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=10.0">
     <title></title>
     <link rel="stylesheet" href="style.css">
 
@@ -39,10 +39,13 @@
             "images": ["ShearStiffness_winfo_erode4_new.nii"],  // Load your NIfTI file
             "showControls": false,  // Hide all UI controls
             "showImageButtons": false, // Hide side buttons
-            "worldSpace": true,      // Maintain real-world coordinates
+            "showRuler": false, 
+            "worldSpace": false,      // Maintain real-world coordinates
+            "flipY": true,
             "smoothDisplay": true,   // Enable smooth rendering
             "orthogonal": false,     // Keep a single view
             "showCrosshairs": false, // Hide crosshairs for a clean experience
+            "lut": "Spectrum",
             "scrollWheel": true,     // Enable seamless slice scrolling
             "fullScreen": true       // Maximize display
         };

@@ -1,7 +1,7 @@
 /* Dark background and light text */
 body {
     font-family: Arial, sans-serif;
-    background-color: #000000;
+    background-color: #000000; /* True black */
     color: #ffffff;
     text-align: center;
     margin: 0;
@@ -10,7 +10,7 @@ body {
 
 /* Header styling */
 header {
-    background-color: #121212;
+    background-color: #000000; /* Set to true black */
     color: white;
     padding: 20px;
     font-size: 24px;
@@ -18,8 +18,9 @@ header {
 
 /* Navigation menu */
 nav {
-    background-color: #333;
+    background-color: #000000; /* True black */
     padding: 15px;
+    border-bottom: 2px solid #333; /* Adds slight contrast */
 }
 
 nav a {
@@ -31,7 +32,7 @@ nav a {
 }
 
 nav a:hover {
-    color: #121212;
+    color: #ffcc00; /* Keeps hover visible against black */
 }
 
 /* Main content */
@@ -60,16 +61,16 @@ a:hover {
 
 /* Form inputs for the contact page */
 input, textarea {
-    background-color: #333;
+    background-color: #1a1a1a; /* Slight contrast so fields are visible */
     color: white;
-    border: 0px solid #ffffff;
+    border: 1px solid #ffffff;
     padding: 10px;
     width: 20%;
 }
 
 input[type="submit"] {
     background-color: #ffcc00;
-    color: #121212;
+    color: #000000; /* Contrast against black */
     border: none;
     cursor: pointer;
     padding: 10px 15px;

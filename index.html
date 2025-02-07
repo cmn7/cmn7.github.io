@@ -9,8 +9,8 @@
     <!-- Load Three.js (Required for AMI.js) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-    <!-- Load AMI.js (Medical Imaging Library) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ami.js/0.0.22/ami.min.js"></script>
+    <!-- Load AMI.js -->
+    <script src="https://cdn.jsdelivr.net/npm/ami.js"></script>
 
     <style>
         /* Fullscreen NIfTI Viewer */
@@ -49,23 +49,38 @@
     </main>
 
     <script>
-        // Create the AMI.js Viewer
-        const container = document.getElementById('container');
+        async function loadNifti() {
+            try {
+                // Initialize AMI.js Renderer
+                const container = document.getElementById('container');
 
-        // Setup the AMI.js Renderer
-        const renderer = new AMI.Renderer(container);
-        renderer.init();
+                // Create a WebGL renderer
+                const renderer = new AMI.VolumeRenderer(container);
+                renderer.init();
 
-        // Load NIfTI file
-        const loader = new AMI.VolumeLoader(container);
-        
-        loader.load(["ShearStiffness_winfo_erode4_new.nii"]).then(() => {
-            const series = loader.data[0];
-            const stack = series.stack[0];
+                // Load the NIfTI file
+                const loader = new AMI.VolumeLoader(container);
+                const series = await loader.load(["ShearStiffness_winfo_erode4_new.nii"]);
 
-            renderer.addSeries(series);
-            renderer.start();
-        }).catch(error => console.error('Error loading NIfTI:', error));
+                if (!series || series.length === 0) {
+                    throw new Error("Failed to load the NIfTI file. Check the file path.");
+                }
+
+                const stack = series[0].stack[0];
+
+                // Add the series to the renderer
+                renderer.addSeries(series[0]);
+                renderer.start();
+
+                console.log("NIfTI file loaded successfully.");
+
+            } catch (error) {
+                console.error("Error loading NIfTI:", error);
+            }
+        }
+
+        // Load the NIfTI file on page load
+        window.onload = loadNifti;
     </script>
 
 </body>

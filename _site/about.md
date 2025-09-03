@@ -1,26 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>about</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <h1></h1>
-    </header>
+---
+title: "About"
+layout: default
+permalink: /about/
+---
 
-    <nav>
-        <a href="index.html">home</a> |
-        <a href="about.html">about</a> |
-        <a href="research.html">research</a> |
-        <a href="contact.html">contact</a>
-    </nav>
-
-    <main>
-        <p></p>
-    </main>
-</body>
-</html>
-
+# About
+Write your bio here in Markdown.
